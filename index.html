@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preço em Tempo Real do Bitcoin</title>
+    <title>Preço Bitcoin em Tempo Real</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Preço Atual do Bitcoin</h1>
-    </header>
-    <main>
-        <section class="content">
-            <p>BTC/USD: <span id="btcPrice">Carregando...</span></p>
-        </section>
-    </main>
+    <div class="container">
+        <img src="bitcoin-btc-logo.png" alt="Logotipo" class="logo">
+        <header>
+            <h1>Preço do Bitcoin em Tempo Real</h1>
+        </header>
+        <main>
+            <div class="price-container">
+                <br>
+                <p style="font-weight: bolder; color: orangered;">BTC/USD: </p>
+                <br>
+                <span style="font-weight: bolder; color: green;" id="btcPrice">Carregando...</span>
+                <br>
+                <p style="font-weight: bolder; color: blue;"id="updateTime">Última atualização: --:--:--</p> <!-- Hora da atualização -->
+            </div>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
