@@ -15,15 +15,37 @@
         </header>
         <main>
             <div class="price-container">
-                <br>
+                
+                
+                <hr>
                 <p style="font-weight: bolder; color: orangered;">BTC/USD: </p>
                 <br>
                 <span style="font-weight: bolder; color: green;" id="btcPrice">Carregando...</span>
                 <br>
-                <p style="font-weight: bolder; color: blue;"id="updateTime">Última atualização: --:--:--</p> <!-- Hora da atualização -->
+                <p style="font-weight: bolder; color: #045aaf;"id="updateTime">Última atualização: --:--:--</p> <!-- Hora da atualização -->
+                <hr>
+            </div>
+            
+            <!-- Tabela de Histórico -->
+            <div class="history-container">
+                <h2>Histórico de Preços</h2>
+                <br>
+                <table id="priceHistoryTable">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Preço (USD)</th>
+                            <th>Preço (BRL)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Registros serão adicionados aqui -->
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>
-    <script src="script.js"></script>
+    <script src="Script.js"></script>
 </body>
 </html>
+

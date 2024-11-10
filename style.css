@@ -10,12 +10,12 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgba(255, 166, 0, 0.466);
+    background-color: rgba(47, 48, 58, 0.829);
 }
 
 .container {
     text-align: center;
-    background-color: #ffffffbd;
+    background-color: white;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -27,11 +27,20 @@ body {
 .logo {
     width: 100px; /* Tamanho do logotipo */
     margin-bottom: 15px;
+    
 }
 
 header h1 {
     font-size: 1.8rem;
-    color: #1e90ff;
+    color: #043c74;
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #043c74;
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
 }
 
 .price-container {
@@ -47,4 +56,48 @@ header h1 {
     .price-container {
         font-size: 1.2rem;
     }
+}
+
+.history-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid #043c74;
+    text-align: center;
+    
+    
+}
+
+th {
+    background-color: #043c74;
+    font-weight: bold;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+p {
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+span {
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+}
+
+hr {
+    border: px solid rgba(47, 48, 58, 0.829); /* Linha preta */
+    width: 90%;  /* Define a largura da linha */
+    margin: 20px auto;  /* Centraliza a linha */
 }

@@ -1,6 +1,8 @@
 const btcPriceElement = document.getElementById("btcPrice");
 const updateTimeElement = document.getElementById("updateTime");
+const priceHistoryTableBody = document.getElementById("priceHistoryTable").querySelector("tbody");
 let lastPrice = null;
+let priceHistory = [];  // Lista para armazenar os últimos 10 registros
 
 async function fetchBTCPrice() {
     try {
@@ -16,8 +18,11 @@ async function fetchBTCPrice() {
 
         // Atualiza o horário da última atualização
         const now = new Date();
-        const formattedTime = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const formattedTime = now.toLocaleTimeString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
         updateTimeElement.textContent = `Última atualização: ${formattedTime}`;
+
+        // Adiciona o novo registro ao histórico
+        addPriceToHistory(formattedTime, btcUSD, btcBRL);
 
         // Verifica se há mudança significativa para enviar notificação
         if (lastPrice && Math.abs(btcUSD - lastPrice) > 500) {
@@ -29,6 +34,33 @@ async function fetchBTCPrice() {
         btcPriceElement.textContent = "Erro ao carregar";
         console.error("Erro ao buscar o preço do BTC:", error);
     }
+}
+
+function addPriceToHistory(time, usdPrice, brlPrice) {
+    // Adiciona o novo preço ao histórico e mantém apenas os 10 registros mais recentes
+    priceHistory.unshift({ time, usdPrice, brlPrice });
+    if (priceHistory.length > 10) {
+        priceHistory.pop();
+    }
+
+    // Atualiza a tabela de histórico
+    updateHistoryTable();
+}
+
+function updateHistoryTable() {
+    // Limpa a tabela antes de atualizar
+    priceHistoryTableBody.innerHTML = '';
+
+    // Adiciona cada registro do histórico à tabela
+    priceHistory.forEach(record => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${record.time}</td>
+            <td>USD $${record.usdPrice.toLocaleString('en-US')}</td>
+            <td>BRL R$${record.brlPrice.toLocaleString('pt-BR')}</td>
+        `;
+        priceHistoryTableBody.appendChild(row);
+    });
 }
 
 function requestNotificationPermission() {
@@ -51,5 +83,6 @@ function sendNotification(btcUSD) {
 }
 
 requestNotificationPermission();
-setInterval(fetchBTCPrice, 30000);
+setInterval(fetchBTCPrice, 3600000); // Atualiza a cada 1 hora (3600000 ms)
+
 fetchBTCPrice();
